@@ -13,10 +13,10 @@
 | [] Ask user for a spanish word                         |
 | [] Go to spanish dict and search this word or phrase   |
 | [] Scrape needed info, definition, basic conjugation,  |
-|	    url                                              |
+|	    url                                          |
 | [] Print results to the users console, or a gui window |
 | [] Ask if he wants to search another word or phrase,   |
-|	    if so go to step 1 and repeat untill user exits  |
+|	if so go to step 1 and repeat untill user exits  |
 **********************************************************
 
 **********************************************************
