@@ -9,13 +9,7 @@ def getting_url(word):
     return response.text
 
 
-def getting_basic_info(html, option):
+def getting_basic_info(html):
     soup = bs4.BeautifulSoup(html, "html.parser")
-    if option == 1 and (soup.find(class_='el') != 'NoneType'):
-        definition = soup.find(class_='el').get_text()
-    elif option == 2 and (soup.find(class_='el') != 'NoneType'):
-        definition = soup.find(class_='el').get_text()
-        conjugation = None
-    else:
-        return 'ERROR'
+    definition = soup.find(class_='el').get_text()
     return definition

@@ -1,33 +1,34 @@
-import collections
 import SpanishDictParser
+from os import system
+from time import sleep
 
 
 def main():
-    print_logo_header()
-    get_user_input(getting_user_intent())
-
-
-def print_logo_header():
-    print("************************************************")
-    print("|                SPANISH DICTIONARY                 |")
-    print("************************************************")
-
-
-def get_user_input(option):
-    print("What do you want to look up?")
-    word = input("Word : ")
+    print_logo()
+    word = input("What do you want to translate : ")
     url = SpanishDictParser.getting_url(word)
-    phrase = SpanishDictParser.getting_basic_info(url, option)
-    print(phrase)
+    print(SpanishDictParser.getting_basic_info(url))
+    what_to_do_next()
 
 
-def getting_user_intent():
-    print("What do you want to do?")
-    print("If you want to Define a selection press 1"
-          "\nIf you want to Conjugate a word press 2")
-    option = input("Choice : ")
-    return int(option)
+def print_logo():
+    print('*******************************************')
+    print('|       SPANISH DICTIONARY PARSER          |')
+    print('*******************************************')
 
 
-if __name__ == 'main':
+def what_to_do_next():
+    print('Do you want to look something else up?')
+    choice = input('Choice [Y] or [N] : ')
+    choice.islower()
+    if choice == 'y':
+        system('cls')
+        main()
+    elif choice == 'n':
+        print('Goodbye!')
+        sleep(1)
+        exit()
+
+
+if __name__ == '__main__':
     main()
