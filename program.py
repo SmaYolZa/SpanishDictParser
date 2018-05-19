@@ -13,8 +13,6 @@ def main():
         case_of_conjugation(word=phrase)
     elif to_do == 2:
         case_of_translation(phrase=phrase)
-    elif to_do == 3:
-        case_of_lookup(phrase=phrase)
 
     stop_or_not()
 
@@ -70,10 +68,6 @@ def case_of_conjugation(word):
 
 def case_of_translation(phrase):
     print(SpanishDictParser.checking_phrase_for_translation(phrase=phrase))
-
-
-def case_of_lookup(phrase):
-    print(SpanishDictParser.looking_up(phrase=phrase))
 
 
 if __name__ == '__main__':

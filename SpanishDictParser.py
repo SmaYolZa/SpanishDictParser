@@ -42,12 +42,11 @@ def checking_phrase_for_translation(phrase):
     :return: Returns the translation of the given phrase of an error
     """
 
-    url = 'http://www.spanishdict.com/translation/{0}'.format(phrase)
+    url = 'http://www.spanishdict.com/translate/{0}'.format(phrase)
     url_return = requests.get(url=url)
     url_return = url_return.text
 
     soup = bs4.BeautifulSoup(url_return, "html.parser")
-
     """
     This part does Error Handling.
     In case the phrase or word fits in a different category or web page redirects it,
@@ -56,39 +55,29 @@ def checking_phrase_for_translation(phrase):
 
     # TODO: add redirects to other types in case this one result's in error
 
-    try:
-        phrase_translation = soup.find(class_='translate').get_text()
-    except AttributeError:
-        return 'ERROR'
-    else:
-        return text_clean_up(phrase_translation)
+    if translation_error_handler(phrase=phrase) == '1':
+        try:
+            phrase_translation = soup.find(class_='el').get_text()
+        except AttributeError:
+            return 'ERROR'
+        else:
+            return text_clean_up(phrase_translation)
 
 
-def looking_up(phrase):
-    """
-    This method looks up the word or phrase
-    * THIS ONLY TRANSLATES SPANISH TO ENGLISH *
-    :param phrase: Word of phrase for look up
-    :return: Returns the definition or translation of the given phrase of word
-    """
-
-    url = 'http://www.spanishdict.com/translation/{0}?t=1&langFrom=en'.format(phrase)
+def translation_error_handler(phrase):
+    url = 'http://www.spanishdict.com/translate/{0}'.format(phrase)
     url_return = requests.get(url=url)
     url_return = url_return.text
 
-    look_up_results = collections.namedtuple('look_up_results', 'microsoft, sdl, promt')
-
     soup = bs4.BeautifulSoup(url_return, "html.parser")
+    try:
+        phrase_translation = soup.find(class_='spelling-row').get_text()
+    except AttributeError:
+        return '1'
 
-    result_microsoft = soup.find(id='mt-to-es').find(class_='mt-info-text').get_text()
-    result_sdl = soup.find(class_='mt-info sdl mt-from-en').find(class_='mt-info-text').get_text
-    result_promt = soup.find(class_='mt-info promt mt-from-en').find(class_='mt-info-text').get_text
-
-    result_microsoft = text_clean_up(result_microsoft)
-    result_sdl = text_clean_up(result_sdl)
-    result_promt = text_clean_up(result_promt)
-
-    return look_up_results(microsoft=result_microsoft, sdl=result_sdl, promt=result_promt)
+    else:
+        if phrase_translation == "We couldn't find what you were looking for.":
+            return '{0} does not exist, try again'.format(phrase)
 
 
 def text_clean_up(text: str):
@@ -103,6 +92,3 @@ def text_clean_up(text: str):
 
     text = text.strip()
     return text
-
-
-
