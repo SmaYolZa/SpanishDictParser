@@ -1,7 +1,7 @@
 missing module named resource - imported by posix, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named posix - imported by os, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named _posixsubprocess - imported by subprocess, Z:\Projects\Python3\SpanishDictParser\program.py
-missing module named org - imported by pickle, Z:\Projects\Python3\SpanishDictParser\program.py
+missing module named 'org.python' - imported by pickle, Z:\Projects\Python3\SpanishDictParser\program.py, xml.sax
 missing module named readline - imported by cmd, code, pdb, Z:\Projects\Python3\SpanishDictParser\program.py
 excluded module named _frozen_importlib - imported by importlib, importlib.abc, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, Z:\Projects\Python3\SpanishDictParser\program.py
@@ -23,7 +23,7 @@ missing module named urllib.quote - imported by urllib, requests.compat
 missing module named grp - imported by shutil, tarfile, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named pwd - imported by posixpath, shutil, tarfile, http.server, webbrowser, netrc, getpass, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named _dummy_threading - imported by dummy_threading, Z:\Projects\Python3\SpanishDictParser\program.py
-missing module named 'org.python' - imported by copy, Z:\Projects\Python3\SpanishDictParser\program.py, xml.sax
+missing module named org - imported by copy, Z:\Projects\Python3\SpanishDictParser\program.py
 missing module named iconv_codec - imported by bs4.dammit
 missing module named cchardet - imported by bs4.dammit
 missing module named lxml - imported by bs4.builder._lxml

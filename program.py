@@ -44,11 +44,10 @@ def stop_or_not():
 
 def what_to_do():
     choice = None
-    while choice != '1' or choice != '2' or choice != '3':
+    while choice != '1' or choice != '2':
         print('\nWhat do you want me to do?')
         print('[1] Conjugate'
-              '\n[2] Translate'
-              '\n[3] Look up')
+              '\n[2] Translate')
         choice = input('Choice : ')
         choice = choice.lower().strip()
 
@@ -56,8 +55,6 @@ def what_to_do():
             return 1
         elif choice == '2':
             return 2
-        elif choice == '3':
-            return 3
         else:
             print('Sorry I did not understand "{0}", please try again'.format(choice))
 
